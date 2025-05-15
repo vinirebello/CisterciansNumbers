@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Reconhecer Número Cisterciense</title>
+    <style>
+        body { font-family: Arial; padding: 40px; }
+        input, button { padding: 10px; font-size: 18px; }
+        .resultado { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Reconhecer Número Cisterciense a partir de imagem</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="imagem">Envie uma imagem PNG do número:</label>
+        <input type="file" name="imagem" accept="image/png" required>
+        <button type="submit">Reconhecer</button>
+    </form>
+
+    {% if numero is not none %}
+        <div class="resultado">
+            <h2>Resultado:</h2>
+            <p><strong>Número reconhecido:</strong> {{ numero }}</p>
+            <img src="{{ url_for('static', filename='../uploads/' ~ imagem) }}" alt="Imagem enviada" width="300">
+        </div>
+    {% endif %}
+</body>
+</html>

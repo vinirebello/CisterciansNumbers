@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor Cisterciense</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .resultado {
+            margin-top: 30px;
+        }
+
+        img {
+            max-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Conversor de Números Cistercienses</h1>
+    <form method="POST">
+        <label for="numero">Digite um número (até 9999): </label>
+        <input type="number" name="numero" id="numero" max="9999" required>
+        <button type="submit">Converter</button>
+    </form>
+
+    {% if numero %}
+    <div class="resultado">
+        <h2>Resultado:</h2>
+        <p><strong>Número arábico:</strong> {{ numero }}</p>
+        <img src="{{ url_for('static', filename=imagem) }}" alt="Número cisterciense" width="300" weight="600">
+    </div>
+    {% endif %}
+
+    <p>Clique no botão abaixo para reconhecer um número cisterciense.</p>
+
+    <form action="{{ url_for('reconhecer') }}">
+        <button type="submit">Ir para Reconhecimento</button>
+    </form>
+</body>
+
+</html>
